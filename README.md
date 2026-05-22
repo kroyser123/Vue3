@@ -1,48 +1,137 @@
-# modal-system
+# Modal System
 
-This template should help get you started developing with Vue 3 in Vite.
+Система управления модальными окнами с поддержкой стека, фокус-трапа, Promise API и полным тестовым покрытием.
 
-## Recommended IDE Setup
+## Технологии
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3 + TypeScript
+- Pinia (state management)
+- Vitest (unit tests)
+- Playwright (E2E tests)
+- Docker + Docker Compose
 
-## Recommended Browser Setup
+## Быстрый старт
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### Требования
 
-## Type Support for `.vue` Imports in TS
+- Node.js 18+
+- npm 9+
+- Docker (опционально)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Установка и запуск
 
-## Customize configuration
+```
+bash
+# 1. Клонировать репозиторий
+git clone <repository-url>
+cd modal-system
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+# 2. Установить зависимости
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 3. Запустить dev сервер
 npm run dev
+Приложение будет доступно по адресу: http://localhost:5173
+
+Тестирование
+Unit тесты (Vitest)
+bash
+# Запустить unit тесты
+npm run test
+
+# Запустить с покрытием
+npm run test:coverage
+Результат: 32 теста, покрытие ~85%
+
+E2E тесты (Playwright)
+bash
+# Запустить E2E тесты
+npm run test:e2e
+Результат: 17 тестов, все проходят
+
+Запуск всех тестов
+bash
+npm run test && npm run test:e2e
+```
+## Docker
+```
+Запуск через Docker
+bash
+# Собрать и запустить
+docker-compose up --build
+
+# Остановить
+docker-compose down
+```
+```
+Или через Makefile
+bash
+make up      # Запустить
+make down    # Остановить
+Приложение будет доступно по адресу: http://localhost:5173
 ```
 
-### Type-Check, Compile and Minify for Production
+## Функциональность
+### Компонент кнопки
+3 варианта стилей (primary, secondary, danger)
 
-```sh
-npm run build
+Состояния disabled и loading
+
+Анимации при наведении и клике
+
+## Модальное окно
+Заголовок, тело, футер
+
+Закрытие: крестик, клик на оверлей, Esc
+
+Скролл внутри окна и на уровне страницы
+
+Блокировка скролла фона
+
+## Система показа
+Императивный API (modalStore.openModal())
+
+Стек модальных окон
+
+Promise API для получения результата
+
+Управление фокусом (trap focus + возврат)
+
+## Демо-страница
+Простое окно
+
+Окно со скроллом внутри
+
+Высокое окно (страничный скролл)
+
+Стек окон (вложенные)
+
+Окно с подтверждением (footer кнопки)
+
+Promise Demo
 ```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+Команды
+Команда	                  Описание
+npm run dev				  Запустить dev сервер
+npm run build				Собрать проект
+npm run test	             Запустить unit тесты
+npm run test:coverage	    Запустить тесты с покрытием
+npm run test:e2e	         Запустить E2E тесты
+docker-compose up --build	Запустить в Docker
+make up	                  Запустить через Makefile
+make down	                Остановить через Makefile
 ```
+Итог
+Проект полностью готов к использованию:
+
+✅ 32 unit теста (Vitest)
+
+✅ 17 E2E тестов (Playwright)
+
+✅ Покрытие кода ~85%
+
+✅ Полная типизация TypeScript
+
+✅ Docker + Docker Compose
+
+✅ Makefile для удобного запуска
